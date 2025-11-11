@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>viewuser</title>
+</head>
+<body>
+    <h2>Manage Police</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Post</th>
+                <th>Station address</th>
+                <th>           </th>
+            </tr>
+            
+             {% for i in val %}
+            <tr>
+                <td>{{i.Name}}</td>
+                <td>{{i.Phone_number}}</td>
+                <td>{{i.Email}}</td>
+                <td>{{i.Gender}}</td>
+                <td>{{i.post}}</td>
+                <td>{{i.Stationaddress}}</td>
+                <td>
+                    <button>Delete</button>
+                </td>
+
+            </tr>
+            {% endfor %}
+           
+        </thead>
+         <!--Add more rows as needed-->
+
+    </table>
+    <a href="/PoliceaddPage">ADD</a>
+    
+</body>
+</html>

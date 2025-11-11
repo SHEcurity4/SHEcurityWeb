@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>viewuser</title>
+</head>
+<body>
+    <h2>view Teacher</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>College</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Qualification</th>
+                <th>        </th>
+            
+               
+            
+                
+            </tr>
+
+           
+             {% for i in val %}
+            <tr>
+                <td>{{i.College_id.College_name}}</td>
+                <td>{{i.Name}}</td>
+                <td>{{i.Phone_number}}</td>
+                <td>{{i.Email}}</td>
+                <td>{{i.Gender}}</td>
+                <td>{{i.Qualification}}</td>
+                <td><button>Accept</button>
+                    <button>Reject</button>
+                </td>
+                
+            </tr>
+            {% endfor %}
+           
+        </thead>
+         <!--Add more rows as needed-->
+
+    </table>
+</body>
+</html>

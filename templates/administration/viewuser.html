@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>viewuser</title>
+</head>
+<body>
+    <h2>User Details</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>College</th>
+            </tr>
+              {% for i in val %}
+            <tr>
+                <td>{{i.Name}}</td>
+                <td>{{i.Phone_number}}</td>
+                <td>{{i.Email}}</td>
+                <td>{{i.Gender}}</td>
+                <td>{{i.College_id.College_name}}</td>
+                
+
+            </tr>
+            {% endfor %}
+           
+        </thead>
+         <!--Add more rows as needed-->
+
+    </table>
+</body>
+</html>

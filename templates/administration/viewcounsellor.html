@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>viewuser</title>
+</head>
+<body>
+    <h2>view Counsellor</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Qualification</th>
+                <th>           </th>
+            </tr>
+             {% for i in val %}
+             <tr>
+                <td>{{ i.Name}}</td>
+                <td>{{ i.Phone_number}}</td>
+                <td>{{i.Email}}</td>
+                <td>{{i.Gender}}</td>
+                <td>{{i.Qualification}}</td>
+                <td>
+                    <button onclick="window.location='/AcceptCounsellor/{{i.id}}'">Accept</button>
+                    <button onclick="window.location='/RejectCounsellor/{{i.id}}'">Reject</button>
+                </td>
+            </tr>
+            {% endfor %}
+           
+        </thead>
+         <!--Add more rows as needed-->
+
+    </table>
+</body>
+</html>
