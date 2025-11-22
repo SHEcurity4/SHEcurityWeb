@@ -39,7 +39,7 @@ class PoliceTable(models.Model):
     Stationaddress=models.CharField(max_length=1000,null=True,blank=True)
 
 class EmergencyTable(models.Model):
-    login_id=models.ForeignKey(LoginTable,on_delete=models.CASCADE,null=True,blank=True)
+    USERID=models.ForeignKey(UserTable,on_delete=models.CASCADE,null=True,blank=True)
     Name=models.CharField(max_length=100,null=True,blank=True)
     Phone_number=models.BigIntegerField()
 
@@ -80,11 +80,13 @@ class CounsellorTable(models.Model):
     Qualification=models.CharField(max_length=100,null=True,blank=True)
 
 class MentalHealthSupportTable(models.Model):
-    login_id=models.ForeignKey(LoginTable,on_delete=models.CASCADE,null=True,blank=True)
+    login_id=models.ForeignKey(UserTable,on_delete=models.CASCADE,null=True,blank=True)
     Counsellor_id=models.ForeignKey(CounsellorTable,on_delete=models.CASCADE,null=True,blank=True)
     reason=models.CharField(max_length=1000,null=True,blank=True)
     reply=models.CharField(max_length=1000,null=True,blank=True)
-    date=models.DateField()
+    date=models.DateField(null=True,blank=True)
+    status = models.CharField(max_length=100, null=True, blank=True)
+    
 
 
     

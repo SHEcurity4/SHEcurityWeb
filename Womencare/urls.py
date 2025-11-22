@@ -31,7 +31,10 @@ urlpatterns = [
    # //////////////////////////////// Api///////////////////////////////
 
    path('UserReg',UserReg.as_view(),name='UserReg'),
+   path('LoginPage',LoginPage.as_view(),name='LoginPage'),
    path('TeacherReg',TeacherReg.as_view(),name='TeacherReg'),
    path('ViewColleges',ViewColleges.as_view(),name='ViewColleges'),
-
+   path('EmergencyContacts/<int:lid>',AddEmergencyContact.as_view(),name='AddEmergencyContact'),
+   path('viewcounsellor',ViewCounc.as_view(),name='viewcounsellor'),
+   path('book/<int:lid>',BookCounsellor.as_view(),name='book'),
 ]

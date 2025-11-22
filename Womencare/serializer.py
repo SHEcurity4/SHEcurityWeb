@@ -30,7 +30,7 @@ class PoliceSerializer(serializers.ModelSerializer):
 class EmergencySerializer(serializers.ModelSerializer):
     class Meta:
         model= EmergencyTable
-        fields=['login_id','Name','Phone_number']        
+        fields='__all__'     
 
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -55,9 +55,20 @@ class FeedbackSerializer(serializers.ModelSerializer):
 class CounsellorSerializer(serializers.ModelSerializer):
     class Meta:
         model= CounsellorTable
-        fields=['login_id','Name','Phone_number','Email','Gender','Qualification']       
+        fields=['id','login_id','Name','Phone_number','Email','Gender','Qualification']       
 
 class MentalHealthSupportSerializer(serializers.ModelSerializer):
     class Meta:
         model= MentalHealthSupportTable
-        fields=['login_id','Counsellor_id','reason','reply','date']               
+        fields=['login_id','Counsellor_id','reason','reply','date']       
+class  BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= MentalHealthSupportTable
+        fields="__all__"  
+
+class BookingHsSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source='Counsellor_id.Name')
+    support_request_id = serializers.CharField(source='id')
+    class Meta:
+        model = MentalHealthSupportTable
+        fields = ['status','date','name','reason','reply','support_request_id']        

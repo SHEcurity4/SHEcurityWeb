@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.views import View
 from rest_framework import status
 
-from Womencare.serializer import CollegeSerializer, LoginSerializer, TeacherSerializer, UserSerializer
+from Womencare.serializer import BookingHsSerializer, BookingSerializer, CollegeSerializer, CounsellorSerializer, EmergencySerializer, LoginSerializer, MentalHealthSupportSerializer, TeacherSerializer, UserSerializer
 from Womencare.models import *
 
 # Create your views here.
@@ -130,7 +130,7 @@ class LoginPage(APIView):
             response_dict["message"] = "failed"
             return Response(response_dict, status=HTTP_400_BAD_REQUEST)
         
-        t_user = LoginTable.objects.filter(username=username).first()
+        t_user = LoginTable.objects.filter(Username=username).first()
         print("$$$$$$$$$$$",t_user)
         
         if not t_user:
@@ -140,6 +140,7 @@ class LoginPage(APIView):
         else:
             response_dict["message"] = "success"
             response_dict["login_id"] = t_user.id
+            response_dict["usertype"] = t_user.Status
 
             return Response(response_dict, status=HTTP_200_OK)
 
@@ -192,4 +193,60 @@ class TeacherReg(APIView):
         return Response({
             'login_error': login_serial.errors if not login_valid else None,
             'teacher_error': teacher_Serializer.errors if not data_valid else None
-            },status=status.HTTP_400_BAD_REQUEST)       
+            },status=status.HTTP_400_BAD_REQUEST)  
+        
+class AddEmergencyContact(APIView):
+        def post(self,request,lid):
+            print("==============", request.data)
+            try:
+                userid= UserTable.objects.get(login_id__id=lid)
+            except UserTable.DoesNotExist:
+                return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+            
+            cont= EmergencySerializer(data=request.data)
+            if cont.is_valid():
+                cont.save(USERID=userid)
+                return Response(cont.data, status=HTTP_200_OK)
+            else:
+                return Response(cont.errors, status=HTTP_400_BAD_REQUEST)
+
+        def delete(self,request,lid):
+            try:
+                c=EmergencyTable.objects.get(id=lid)
+                c.delete()
+                return Response({"message": "Deleted successfully"}, status=status.HTTP_200_OK)
+            except EmergencyTable.DoesNotExist:
+                return Response({"error": "Contact not found"}, status=status.HTTP_404_NOT_FOUND)
+                
+        def get(self,request,lid):
+                c=EmergencyTable.objects.filter(USERID__login_id__id=lid)
+                ser=EmergencySerializer(c, many=True)
+                return Response( ser.data, status=status.HTTP_200_OK)    
+    
+
+class ViewCounc(APIView):
+    def get(self, request):
+        c = CounsellorTable.objects.filter(login_id__Status = "Counsellor")
+        ser = CounsellorSerializer(c, many=True)
+        return Response(ser.data, status=HTTP_200_OK)
+  
+
+class BookCounsellor(APIView):
+    def post(self, request, lid):
+        print(request.data)
+        c = UserTable.objects.get(login_id__id = lid)
+        ser = BookingSerializer(data=request.data)
+        if ser.is_valid():
+            ser.save(login_id=c ,status="pending")
+            return Response(ser.data, status=HTTP_200_OK) 
+        else:
+            return Response(ser.errors, status=HTTP_400_BAD_REQUEST)
+        
+    def get(self,request,lid):
+        c = MentalHealthSupportTable.objects.filter(login_id__login_id__id = lid) 
+        ser = BookingHsSerializer(c, many=True)
+        return Response(ser.data, status=HTTP_200_OK) 
+
+# class GetALLMobileNumbers(APIView):
+#     def get(self, request, lid):
+#         emergency  
