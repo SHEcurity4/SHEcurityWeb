@@ -1,26 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>addcollege</title>
-    </head>
-    <body>
-        <h2>Register</h2>
-        <form action="/register" method="post">
-            <label for="name":>name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
+<head>
+    <title>addcollege</title>
 
-             <label for="number":>number:</label><br>
-            <input type="number" id="number" name="number" required><br><br>
+    <!-- Internal CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
 
-            <label for="Email":>Email:</label><br>
-            <input type="text" id="Email" name="Email" required><br><br>
-            <textarea name="address" >Address</textarea>
+        h2 {
+            text-align: center;
+            color: #333;
+        }
 
+        form {
+            width: 350px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
+        label {
+            font-weight: bold;
+            color: #444;
+        }
 
-             <input type="submit"value="submit">
-             
-        </form> 
-          
-    </body>
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        input[type="submit"] {
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Register</h2>
+
+    <form action="/register" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="number">Number:</label><br>
+        <input type="number" id="number" name="number" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="Email" required><br><br>
+
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
 </html>

@@ -1,11 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-     <title>viewuser</title>
+    <meta charset="UTF-8">
+    <title>Manage Police | SHECURITY</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            min-height:100vh;
+            font-family:"Segoe UI", Arial, sans-serif;
+            background-image:url("image.jpeg");
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+            padding:0;
+            background-image: url(https://i.pinimg.com/originals/b8/2a/cf/b82acfe0e639043903af217b3059c92f.jpg); 
+            height:84vh;
+        }
+
+        /* Soft ruby overlay */
+        body::before{
+            content:"";
+            position:fixed;
+            inset:0;
+            background:rgba(247,236,238,0.9);
+            z-index:0;
+        }
+
+        /* Navigation Bar */
+        .navbar{
+            position:relative;
+            z-index:2;
+            background:linear-gradient(to right,#841B2D,#A63A50);
+            padding:16px 40px;
+            box-shadow:0 6px 18px rgba(94,15,30,0.4);
+        }
+
+        .navbar a{
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            font-weight:bold;
+            display:flex;
+            align-items:center;
+            gap:8px;
+        }
+
+        .navbar a:hover{
+            text-decoration:underline;
+        }
+
+        .container{
+            position:relative;
+            z-index:1;
+            background:rgba(255,255,255,0.97);
+            padding:38px;
+            border-radius:30px;
+            box-shadow:0 25px 55px rgba(94,15,30,0.35);
+            animation:fadeIn 0.8s ease;
+            margin:40px;
+        }
+
+        @keyframes fadeIn{
+            from{opacity:0;transform:translateY(25px)}
+            to{opacity:1;transform:translateY(0)}
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:32px;
+            color:#841B2D;
+            font-size:34px;
+            letter-spacing:1px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            border-radius:22px;
+            overflow:hidden;
+        }
+
+        thead{
+            background:linear-gradient(to right,#841B2D,#A63A50);
+            color:white;
+        }
+
+        th,td{
+            padding:14px 10px;
+            text-align:center;
+            font-size:14px;
+        }
+
+        tbody tr{
+            background:#ffffff;
+            transition:0.3s ease;
+        }
+
+        tbody tr:nth-child(even){
+            background:#F7ECEE;
+        }
+
+        tbody tr:hover{
+            background:#F1D6DB;
+            transform:scale(1.01);
+        }
+
+        td{
+            color:#3B0A12;
+        }
+
+        button{
+            padding:7px 20px;
+            border:none;
+            border-radius:25px;
+            background:linear-gradient(to right,#841B2D,#A63A50);
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s ease;
+        }
+
+        button:hover{
+            background:linear-gradient(to right,#5E0F1E,#841B2D);
+            transform:translateY(-2px);
+            box-shadow:0 8px 16px rgba(94,15,30,0.4);
+        }
+
+        .add-btn{
+            display:inline-block;
+            margin-top:28px;
+            padding:13px 32px;
+            background:linear-gradient(to right,#841B2D,#A63A50);
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+            border-radius:40px;
+            transition:0.3s ease;
+            float:right;
+        }
+
+        .add-btn:hover{
+            background:linear-gradient(to right,#5E0F1E,#841B2D);
+            transform:translateY(-3px);
+            box-shadow:0 10px 20px rgba(94,15,30,0.45);
+        }
+
+        /* Decorative ruby butterflies */
+        .butterfly{
+            position:absolute;
+            font-size:26px;
+            opacity:0.3;
+            animation:float 6s ease-in-out infinite;
+        }
+
+        .b1{top:-14px;left:-14px}
+        .b2{bottom:-14px;right:-14px;animation-delay:2s}
+
+        @keyframes float{
+            0%,100%{transform:translateY(0)}
+            50%{transform:translateY(-16px)}
+        }
+    </style>
 </head>
+
 <body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="/home">🏠 Home</a>
+</div>
+
+<div class="container">
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
+
     <h2>Manage Police</h2>
-    <table border="1">
+
+    <table>
         <thead>
             <tr>
                 <th>Name</th>
@@ -13,30 +190,30 @@
                 <th>Email</th>
                 <th>Gender</th>
                 <th>Post</th>
-                <th>Station address</th>
-                <th>           </th>
+                <th>Station Address</th>
+                <th>Action</th>
             </tr>
-            
-             {% for i in val %}
-            <tr>
-                <td>{{i.Name}}</td>
-                <td>{{i.Phone_number}}</td>
-                <td>{{i.Email}}</td>
-                <td>{{i.Gender}}</td>
-                <td>{{i.post}}</td>
-                <td>{{i.Stationaddress}}</td>
-                <td>
-                    <button>Delete</button>
-                </td>
+        </thead>
 
+        <tbody>
+            {% for i in val %}
+            <tr>
+                <td>{{ i.Name }}</td>
+                <td>{{ i.Phone_number }}</td>
+                <td>{{ i.Email }}</td>
+                <td>{{ i.Gender }}</td>
+                <td>{{ i.post }}</td>
+                <td>{{ i.Stationaddress }}</td>
+                <td>
+                    <button onclick="window.location='/DeletePolice/{{i.login_id.id}}'">Delete</button>
+                </td>
             </tr>
             {% endfor %}
-           
-        </thead>
-         <!--Add more rows as needed-->
-
+        </tbody>
     </table>
-    <a href="/PoliceaddPage">ADD</a>
-    
+
+    <a href="/PoliceaddPage" class="add-btn">＋ Add Police</a>
+</div>
+
 </body>
 </html>

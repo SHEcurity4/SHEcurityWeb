@@ -22,12 +22,16 @@ class UserTable(models.Model):
     Age=models.IntegerField()
     College_id=models.ForeignKey(CollegeTable,on_delete=models.CASCADE,null=True,blank=True)
     login_id=models.ForeignKey(LoginTable, on_delete=models.CASCADE, null=True,blank=True)
-
 class ComplaintTable(models.Model):
-    login_id=models.ForeignKey(LoginTable,on_delete=models.CASCADE,null=True,blank=True)
-    Complaints=models.CharField(max_length=1500,null=True,blank=True)
-    Reply=models.CharField(max_length=1500,null=True,blank=True)
-    date=models.DateField()
+    login_id = models.ForeignKey(LoginTable, on_delete=models.CASCADE, null=True, blank=True)
+    complaint_type = models.CharField(max_length=50, default="general")
+    Complaints = models.CharField(max_length=1500, null=True, blank=True)
+    Reply = models.CharField(max_length=1500, null=True, blank=True)
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.login_id} - {self.complaint_type}"
+
 
 class PoliceTable(models.Model):
     login_id=models.ForeignKey(LoginTable,on_delete=models.CASCADE,null=True,blank=True)
@@ -69,7 +73,7 @@ class FeedbackTable(models.Model):
     login_id=models.ForeignKey(LoginTable,on_delete=models.CASCADE,null=True,blank=True)
     feedback=models.CharField(max_length=1000,null=True,blank=True)
     rating=models.IntegerField()
-    date=models.DateField()
+    date=models.DateField(auto_now_add=True)
 
 class CounsellorTable(models.Model):
     login_id=models.ForeignKey(LoginTable,on_delete=models.CASCADE,null=True,blank=True)

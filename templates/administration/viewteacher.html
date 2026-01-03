@@ -1,11 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <title>viewuser</title>
+    <title>View Teacher</title>
+
+    <!-- Internal CSS ONLY (Functions unchanged) -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff0f5;
+            padding: 0;
+            margin: 0;
+            background-image: url(https://tse4.mm.bing.net/th/id/OIP.ecaPAa431NFg1dH6Kpu-KAHaEK?pid=Api&P=0&h=220); 
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 84vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #f4a6c1;
+            padding: 14px 30px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(214, 51, 132, 0.3);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background: rgba(255,255,255,0.35);
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        h2 {
+            text-align: center;
+            margin: 25px 0;
+            color: #d63384;
+        }
+
+        table {
+            width: 95%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 6px 18px rgba(214, 51, 132, 0.25);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #f4a6c1;
+            color: #ffffff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #f7c6d9;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fff5f8;
+        }
+
+        tr:hover {
+            background-color: #fde2ea;
+        }
+
+        button {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:first-child {
+            background-color: #f8b4cc;
+            color: #7a1e35;
+            margin-right: 6px;
+        }
+
+        button:last-child {
+            background-color: #f28bb2;
+            color: #ffffff;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>view Teacher</h2>
-    <table border="1">
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/home">🏠 Home</a>
+    </div>
+
+    <h2>View Teacher</h2>
+
+    <table>
         <thead>
             <tr>
                 <th>College</th>
@@ -14,32 +125,33 @@
                 <th>Email</th>
                 <th>Gender</th>
                 <th>Qualification</th>
-                <th>        </th>
-            
-               
-            
-                
+                <th>Action</th>
             </tr>
+        </thead>
 
-           
-             {% for i in val %}
+        <tbody>
+            {% for i in val %}
             <tr>
-                <td>{{i.College_id.College_name}}</td>
-                <td>{{i.Name}}</td>
-                <td>{{i.Phone_number}}</td>
-                <td>{{i.Email}}</td>
-                <td>{{i.Gender}}</td>
-                <td>{{i.Qualification}}</td>
-                <td><button>Accept</button>
-                    <button>Reject</button>
+                <td>{{ i.College_id.College_name }}</td>
+                <td>{{ i.Name }}</td>
+                <td>{{ i.Phone_number }}</td>
+                <td>{{ i.Email }}</td>
+                <td>{{ i.Gender }}</td>
+                <td>{{ i.Qualification }}</td>
+                <td>
+                     {% if i.login_id.Status == 'Teacher' %}
+                <button onclick="window.location='/RejectTeacher/{{ i.id }}'">Reject</button>
+                {% elif i.login_id.Status == 'Rejected' %}
+                <button onclick="window.location='/AcceptTeacher/{{ i.id }}'">Accept</button>
+                {% else %}    
+                <button onclick="window.location='/RejectTeacher/{{ i.id }}'">Reject</button>
+                <button onclick="window.location='/AcceptTeacher/{{ i.id }}'">Accept</button>
+                {% endif %} 
                 </td>
-                
             </tr>
             {% endfor %}
-           
-        </thead>
-         <!--Add more rows as needed-->
-
+        </tbody>
     </table>
+
 </body>
 </html>

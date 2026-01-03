@@ -1,21 +1,107 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>addpolice</title>
-    </head>
-    <body>
-        <h2>Register</h2>
-        <form action="/register" method="post">
-            <label for="name":>name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
+<head>
+    <title>addpolice</title>
 
-             <label for="number":>number:</label><br>
-            <input type="number" id="number" name="number" required><br><br>
-            <textarea name="address" >Address</textarea>
+    <!-- Internal CSS : Snapdragon Theme -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to bottom right, #fff0f2, #fde2e6);
+            padding: 40px;
+        }
 
-             <input type="submit"value="submit">
-             
-        </form>  
-          
-    </body>
+        h2 {
+            text-align: center;
+            color: #c6364b;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        form {
+            width: 340px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(198, 54, 75, 0.25);
+        }
+
+        label {
+            color: #8b1e2d;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #f1b6c0;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #e44c65;
+            box-shadow: 0 0 6px rgba(228, 76, 101, 0.4);
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        input[type="submit"] {
+            margin-top: 18px;
+            background: linear-gradient(to right, #e44c65, #c6364b);
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 22px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Register</h2>
+
+    <form  method="post">
+        {% csrf_token %}
+        <label for="Name">Name:</label><br>
+        <input type="text" id="Name" name="Name" required><br><br>
+
+        <label for="Phone_number">Phone_number:</label><br>
+        <input type="Phone_number" id="Phone_number" name="Phone_number" required><br><br>
+        <label for="Email">Email:</label><br>
+        <input type="text" id="Email" name="Email" required><br><br>
+
+        <label for="Gender">Gender:</label><br> 
+        <input type="radio" id="male" name="Gender" value="male">Male<br>
+        <input type="radio" id="female" name="Gender" value="female">Female<br><br>
+
+        <label for="post">post:</label><br>
+        <input type="text" id="post" name="post" required><br><br>
+
+        <label for="post">password:</label><br>
+        <input type="text" id="password" name="password" required><br><br>
+
+        <textarea name="Stationaddress">Stationaddress</textarea>
+
+        <input type="submit" value="submit">
+    </form>  
+
+</body>
 </html>

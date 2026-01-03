@@ -19,8 +19,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 class ComplaintSerializer(serializers.ModelSerializer):
     class Meta:
-        model= ComplaintTable
-        fields=['login_id','Complaints','Reply','date''Age']
+        model = ComplaintTable
+        fields = '__all__'
+
 
 class PoliceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -72,3 +73,16 @@ class BookingHsSerializer(serializers.ModelSerializer):
     class Meta:
         model = MentalHealthSupportTable
         fields = ['status','date','name','reason','reply','support_request_id']        
+
+
+class ComplaintsSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='login_id.Username')
+    class Meta:
+        model = ComplaintTable
+        fields = ['id','Complaints', 'username','Reply','date']
+
+
+class Feedbackser(serializers.ModelSerializer):
+    class Meta:
+        model = FeedbackTable
+        fields = '__all__'

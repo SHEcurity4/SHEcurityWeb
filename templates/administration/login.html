@@ -3,17 +3,60 @@
 <head>
     <title>Login page</title>
 </head>
+<style>
+    body{
+        background-image: url(https://png.pngtree.com/background/20230304/original/pngtree-happy-international-women-s-day-march-8-vector-picture-image_2083501.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 84vh;
+    }
+    form{
+         border: 1px solid  pink;
+         width: 300px;
+         height: 300px;
+         margin: auto;
+         padding: 30px;
+         margin-top: 100px;
+         text-align: center;
+         border-radius: 10px;
+         box-shadow: 0px 10px 50px rgb(255, 255, 255);
+    }
+    input{
+        padding: 10px;
+        /* border: none;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-bottom-left-radius: 20px; */
+        background-color: transparent;
+    }
+    .btnlogin{
+        width: 100px;
+        background-color: rgba(237, 155, 220, 0.628);
+        border: none;
+        margin-bottom: 15px;
+
+    }
+    .btnlogin:hover{
+        border-radius: 10px;
+        border: 2px solid rgba(237, 155, 220, 0.628);
+        background-color: aliceblue;
+        cursor: progress;
+    }
+</style>
 <body>
-    <h2>Login</h2>
     <form action ="" method="post">
+    <h2 style="color: red;">Login</h2>
+
         {% csrf_token %}
-         <label for ="username">Username:</label><br>
-         <input type ="text" id="username" name="username" required><br><br>
+         <!-- <label for ="username">Username:</label><br> -->
+         <input type ="text" id="username" name="username" required placeholder="username"><br><br>
 
-         <label for ="password">password:</label><br>
-         <input type ="password" id="password" name="password" required><br><br>
+         <!-- <label for ="password">password:</label><br> -->
+         <input type ="password" id="password" name="password" required placeholder="password"><br><br>
 
-         <input type="submit" value="Login">
+         <input type="submit" value="Login" class="btnlogin"><br>
+
+         <a href="/councereg">Registration</a>
     </form>  
 
 </body>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>register</title>
+
+    <!-- Internal CSS : Various Pink Shades -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #ffe4ec, #ffd1dc, #ffc0cb);
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #c2185b;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        form {
+            width: 360px;
+            margin: auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 16px;
+            box-shadow: 0 12px 28px rgba(194, 24, 91, 0.3);
+        }
+
+        label {
+            color: #ad1457;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #f48fb1;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #ec407a;
+            box-shadow: 0 0 6px rgba(236, 64, 122, 0.5);
+        }
+
+        input[type="radio"] {
+            accent-color: #e91e63;
+            margin-right: 6px;
+        }
+
+        input[name="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            border: 1px solid #f48fb1;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #ec407a, #d81b60);
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(216, 27, 96, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Register</h2>
+
+    <form method="post">
+        <label for="name">name:</label><br>
+        <input type="text" id="name" name="Name" required><br><br>
+
+        <label for="number">number:</label><br>
+        <input type="number" id="number" name="Phone_number" required><br><br>
+
+        <label for="email">email:</label><br>
+        <input type="text" id="email" name="Email" required><br><br>
+
+        <label for="gender">gender:</label><br>
+        <input type="radio" id="male" name="Male" value="male">Male<br>
+        <input type="radio" id="female" name="Female" value="female">Female<br><br>
+
+        <label for="qualification">qualification:</label><br>
+        <input type="text" id="qualification" name="Qualification" required><br><br>
+
+        <label for="">Password</label><br>      
+        <input type="text" name="password" placeholder="Enter your password">
+
+        <input type="submit" value="register">
+    </form>
+</body>
+</html>

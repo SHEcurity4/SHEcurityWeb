@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <title>viewuser</title>
+    <title>Manage Lawyer</title>
+
+    <!-- Internal CSS : Berry Rose Theme -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to bottom, #fdecef, #f8d7df);
+            padding: 0;
+            margin: 0;
+            color: #4b1e2f;
+            background-image: url(https://st2.depositphotos.com/1605581/6364/i/950/depositphotos_63648405-stock-photo-abstract-pink-background-design.jpg); 
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 84vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: linear-gradient(to right, #8b2f4b, #b23a5f);
+            padding: 14px 30px;
+            box-shadow: 0 4px 12px rgba(139, 47, 75, 0.35);
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 30px 0;
+            color: #8b2f4b;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 95%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(139, 47, 75, 0.25);
+        }
+
+        thead {
+            background: linear-gradient(to right, #8b2f4b, #b23a5f);
+            color: #ffffff;
+        }
+
+        th, td {
+            padding: 13px;
+            text-align: center;
+            border: 1px solid #f1c7d2;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcf3f6;
+        }
+
+        tr:hover {
+            background-color: #f6dfe6;
+        }
+
+        button {
+            padding: 7px 16px;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s ease;
+        }
+
+        button:first-child {
+            background: linear-gradient(to right, #7acaa0, #4caf82);
+            color: #1f5e44;
+            margin-right: 8px;
+        }
+
+        button:last-child {
+            background: linear-gradient(to right, #e06c86, #c94b67);
+            color: #ffffff;
+        }
+
+        button:hover {
+            opacity: 0.88;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
+
 <body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/home">🏠 Home</a>
+    </div>
+
     <h2>Manage Lawyer</h2>
-    <table border="1">
+
+    <table>
         <thead>
             <tr>
                 <th>Name</th>
@@ -13,26 +120,32 @@
                 <th>Email</th>
                 <th>Gender</th>
                 <th>Qualification</th>
-                <th>            </th>
+                <th>Action</th>
             </tr>
-            
-             {% for i in val %}
+        </thead>
+
+        <tbody>
+            {% for i in val %}
             <tr>
-                <td>{{i.Name}}</td>
-                <td>{{i.Phone_number}}</td>
-                <td>{{i.Email}}</td>
-                <td>{{i.Gender}}</td>
-                <td>{{i.Qualification}}</td>
+                <td>{{ i.Name }}</td>
+                <td>{{ i.Phone_number }}</td>
+                <td>{{ i.Email }}</td>
+                <td>{{ i.Gender }}</td>
+                <td>{{ i.Qualification }}</td>
                 <td>
-                    <button>Accept</button>
-                    <button>Reject</button>
+                     {% if i.login_id.Status == 'Lawyer' %}
+                <button onclick="window.location='/RejectLawyer/{{ i.id }}'">Reject</button>
+                {% elif i.login_id.Status == 'Rejected' %}
+                <button onclick="window.location='/AcceptLawyer/{{ i.id }}'">Accept</button>
+                {% else %}    
+                <button onclick="window.location='/RejectLawyer/{{ i.id }}'">Reject</button>
+                <button onclick="window.location='/AcceptLawyer/{{ i.id }}'">Accept</button>
+                {% endif %}
                 </td>
             </tr>
             {% endfor %}
-           
-        </thead>
-         <!--Add more rows as needed-->
-
+        </tbody>
     </table>
+
 </body>
 </html>

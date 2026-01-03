@@ -1,20 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Adminhome</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHECURITY | Admin Dashboard</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:Segoe UI,sans-serif;
+    background:linear-gradient(to bottom,#fff1f2,#ffe5ea);
+    color:#5a3e36;
+    overflow-x:hidden;
+    
+        background-image: url(https://png.pngtree.com/background/20230304/original/pngtree-happy-international-women-s-day-march-8-vector-picture-image_2083501.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    
+}
+
+/* FLOWER ANIMATION */
+.flowers{position:fixed;inset:0;pointer-events:none;z-index:0}
+.flower{
+    position:absolute;
+    bottom:-40px;
+    font-size:26px;
+    opacity:.35;
+    animation:float linear infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0) rotate(0);opacity:0}
+    10%{opacity:.4}
+    100%{transform:translateY(-120vh) rotate(360deg);opacity:0}
+}
+.flower:nth-child(1){left:10%;animation-duration:14s}
+.flower:nth-child(2){left:30%;animation-duration:18s}
+.flower:nth-child(3){left:50%;animation-duration:16s}
+.flower:nth-child(4){left:70%;animation-duration:20s}
+.flower:nth-child(5){left:90%;animation-duration:15s}
+body>*:not(.flowers){position:relative;z-index:1}
+
+/* NAVBAR */
+.navbar{
+    background:#f7b2b7;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.logo{font-size:26px;font-weight:bold;color:#7a2e2e}
+.navbar ul{list-style:none;display:flex;gap:20px}
+.navbar a{
+    text-decoration:none;
+    color:#7a2e2e;
+    padding:8px 16px;
+    border-radius:20px;
+}
+.navbar a:hover{background:#ffd6db}
+
+/* HERO */
+.hero{text-align:center;padding:70px 40px}
+.hero h1{font-size:38px;color:#b04a4a}
+.hero p{max-width:700px;margin:15px auto;line-height:1.7}
+
+/* CONTAINER */
+.container{padding:40px 80px}
+
+/* DASHBOARD */
+.dashboard h2{font-size:30px;color:#b04a4a}
+.dashboard-desc{margin:15px 0 35px;color:#7a5a55}
+.dashboard-list{display:flex;flex-direction:column;gap:22px}
+
+.dashboard-item{
+    background:#fff;
+    padding:26px 32px;
+    border-radius:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+}
+.dashboard-item:hover{background:#fff0f3;transform:translateY(-4px)}
+
+.item-left{display:flex;gap:18px;align-items:center}
+.icon{font-size:34px}
+.item-desc{font-size:13px;color:#7a5a55}
+
+.item-btn{
+    background:#f28b94;
+    color:white;
+    padding:10px 24px;
+    border-radius:25px;
+    text-decoration:none;
+}
+
+/* ABOUT */
+.about{
+    margin-top:80px;
+    background:#ffe6e9;
+    padding:45px;
+    border-radius:35px;
+}
+
+/* FOOTER */
+footer{
+    margin-top:60px;
+    padding:20px;
+    text-align:center;
+    background:#f7b2b7;
+    color:#7a2e2e;
+}
+</style>
 </head>
+
 <body>
-    <!-- <a href="/CollegePage">viewcollege</a></t> -->
-    <a href="/CounsellorPage">View Counsellor</a></t>
-    <a href="/EmergencyPage">View Emergency</a></t>
-    <a href="/lawyerPage">View lawyer</a></t>
-    <a href="/PolicePage">View police</a></t>
-    <a href="/TeacherPage">View teacher</a></t>
-    <a href="/userPage">View user</a></t>
-    
 
-    
+<div class="flowers">
+    <div class="flower">🌸</div>
+    <div class="flower">🌺</div>
+    <div class="flower">🌷</div>
+    <div class="flower">🌸</div>
+    <div class="flower">🌺</div>
+</div>
 
+<nav class="navbar">
+    <div class="logo">SHECURITY Admin</div>
+    <ul>
+        <li><a href="/viewcounsellor">Counsellor</a></li>
+        <li><a href="/viewemergency">Emergency</a></li>
+        <li><a href="/viewlawyer">Lawyer</a></li>
+        <li><a href="/viewpolice">Police</a></li>
+        <li><a href="/viewteacher">Teacher</a></li>
+        <li><a href="/viewuser">Users</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>Empowering Women’s Safety</h1>
+    <p>Manage all safety services from one secure admin dashboard.</p>
+</section>
+
+<div class="container">
+
+<section class="dashboard">
+<h2>Admin Dashboard</h2>
+<p class="dashboard-desc">Monitor and manage all SHECURITY services.</p>
+
+<div class="dashboard-list">
+
+<div class="dashboard-item">
+<div class="item-left"><span class="icon">🧠</span>
+<div><h4>Counsellors</h4><p class="item-desc">Mental health support</p></div>
+</div>
+<a href="/viewcounsellor" class="item-btn">View</a>
+</div>
+
+<div class="dashboard-item">
+<div class="item-left"><span class="icon">🚨</span>
+<div><h4>Emergency</h4><p class="item-desc">SOS & crisis alerts</p></div>
+</div>
+<a href="/viewemergency" class="item-btn">View</a>
+</div>
+
+<div class="dashboard-item">
+<div class="item-left"><span class="icon">⚖️</span>
+<div><h4>Lawyer</h4><p class="item-desc">Legal assistance</p></div>
+</div>
+<a href="/viewlawyer" class="item-btn">View</a>
+</div>
+
+<div class="dashboard-item">
+<div class="item-left"><span class="icon">👮‍♀️</span>
+<div><h4>Police</h4><p class="item-desc">Law enforcement</p></div>
+</div>
+<a href="/viewpolice" class="item-btn">View</a>
+</div>
+
+<!-- ✅ ADDED TEACHER VIEW -->
+<div class="dashboard-item">
+<div class="item-left"><span class="icon">👩‍🏫</span>
+<div><h4>Teachers</h4><p class="item-desc">Academic support & guidance</p></div>
+</div>
+<a href="/viewteacher" class="item-btn">View</a>
+</div>
+
+<div class="dashboard-item">
+<div class="item-left"><span class="icon">👤</span>
+<div><h4>Users</h4><p class="item-desc">Registered women</p></div>
+</div>
+<a href="/viewuser" class="item-btn">View</a>
+</div>
+
+</div>
+</section>
+
+<section class="about">
+<h2>About SHECURITY</h2>
+<p>
+SHECURITY is a women safety platform that integrates emergency response,
+law enforcement, legal assistance, counselling, and academic support
+to ensure complete protection and empowerment.
+</p>
+</section>
+
+</div>
+
+<footer>
+© 2026 SHECURITY | Women Safety Platform
+</footer>
 
 </body>
 </html>
