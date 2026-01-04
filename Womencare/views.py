@@ -93,7 +93,7 @@ class AddCollegePage(View):
     
 class CounsellorRegisterPage(View):
     def get(self, request):
-        return render(request, 'counsellor/councereg.html')
+        return render(request, 'counsellor/CounsellorRegisterPage.html')
     def post(self, request):
         c =CouncellorForm(request.POST)
         if c.is_valid():
@@ -304,7 +304,9 @@ class AddEmergencyContact(APIView):
 class ViewCounc(APIView):
     def get(self, request):
         c = CounsellorTable.objects.filter(login_id__Status = "Counsellor")
+        print(c)
         ser = CounsellorSerializer(c, many=True)
+        print(ser)
         return Response(ser.data, status=HTTP_200_OK)
   
 
@@ -382,6 +384,7 @@ class ComplaintAPIView(APIView):
     def get(self, request):
         # Return all complaints
         complaints = ComplaintTable.objects.filter(complaint_type="police")
+        print(complaints)
         serializer = ComplaintsSerializer(complaints, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

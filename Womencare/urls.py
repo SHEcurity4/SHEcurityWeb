@@ -8,7 +8,7 @@ urlpatterns = [
 #/////////////////////////////// ADMIN //////////////////////////////////
 
     path('', Login_Page.as_view(), name='LoginPage'),
-    path('home',Admin_home.as_view(), name='home'),
+    path('Admin_home',Admin_home.as_view(), name='Admin_home'),
     path('PoliceaddPage',PoliceaddPage.as_view(), name='PoliceaddPage'),
     path('CollegePage', CollegePage.as_view(), name='CollegePage'),
     path('viewcounsellor', CounsellorPage.as_view(), name='viewcounsellor'),
@@ -31,7 +31,7 @@ urlpatterns = [
 
 # //////////////////////////////// cousellor///////////////////////////////
 
-   path('councereg', CounsellorRegisterPage.as_view(), name='councereg'),
+   path('CounsellorRegisterPage', CounsellorRegisterPage.as_view(), name='CounsellorRegisterPage'),
    path('mentalhealthsupport', MentalHealthSupportPage.as_view(), name='mentalhealthsupport'),
   
 
@@ -43,8 +43,8 @@ urlpatterns = [
    path('TeacherReg',TeacherReg.as_view(),name='TeacherReg'),
    path('ViewColleges',ViewColleges.as_view(),name='ViewColleges'),
    path('EmergencyContacts/<int:lid>',AddEmergencyContact.as_view(),name='AddEmergencyContact'),
-   path('viewcounsellor',ViewCounc.as_view(),name='viewcounsellor'),
-   path('book/<int:lid>',BookCounsellor.as_view(),name='book'),
+   path('viewcounsellors',ViewCounc.as_view(),name='viewcounsellors'),
+   path('BookCounsellor/<int:lid>',BookCounsellor.as_view(),name='BookCounsellor'),
    path('GetAllNumbers/<int:lid>',GetAllMobileNumbers.as_view(),name='GetAllNumbers'),
    path('add_complaint/', AddComplaint.as_view()),
    path('get_complaints/<int:login_id>/', GetComplaints.as_view()), 
